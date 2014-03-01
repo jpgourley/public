@@ -2,6 +2,7 @@
 
 REM Jason Gourley
 REM Batch Rename File Prefix
+REM batchPrefix.bat <currentFilename> <newFilename> <delimeter> "-s"
 
 
 if "%1" == "" (
