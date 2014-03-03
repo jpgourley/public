@@ -11,30 +11,32 @@ REM CLA 4 == "-s" for sub-directories
 if "%1" == "" (
 	ECHO Missing File Name Arguements
 	CALL :batchInfo
-	EXIT /b
+	GOTO :EOF
 	)
 
 if "%2" == "" (
 	ECHO Missing Second Name Arguement
 	CALL :batchInfo
-	EXIT /b
+	GOTO :EOF
 	)
 
 if "%3" == "" (
 	ECHO Missing Delimeter Arguement	
 	CALL :batchInfo
-	EXIT /b
+	GOTO :EOF
 	)
 
+ECHO Replacing Prefix "%1"%3 with "%2"%3
+	
 if "%4"  == "-s" (
-	ECHO Replacing Prefix "%1"%3 with "%2"%3 in all subfolders
+	ECHO In all subfolders
 	REM replace sub directories
 	CALL :directories %1 %2 %3
-	REM replace root directory
-	CALL :replaceNames %1 %2 %3
-	EXIT /b
+	REM replace root directory	
 	)
 
+CALL :replaceNames %1 %2 %3
+	
 :replaceNames
 	For /F "tokens=1* delims=%3" %%I IN ('dir /a-d /b') DO (
 	IF %%I == %1 (rename "%%~I_%%~J" "%2_%%~J"))
