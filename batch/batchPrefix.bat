@@ -2,47 +2,57 @@
 
 REM Jason Gourley
 REM Batch Rename File Prefix
-REM batchPrefix.bat <currentFilename> <newFilename> <delimeter> "-s"
 
+REM CLA 1 == Current Prefix
+REM CLA 2 == New Prefix
+REM CLA 3 == Delimeter
+REM CLA 4 == "-s" for sub-directories
 
 if "%1" == "" (
-	echo Missing File Name Arguements
-	echo "batchPrefix.bat oldPrefix newPrefix delimeter"
-	echo Add "-s" as the final argument for all subfolders
-	exit /b
-)
+	ECHO Missing File Name Arguements
+	CALL :batchInfo
+	EXIT /b
+	)
 
 if "%2" == "" (
-	echo Missing Second Name Arguement
-	echo "batchPrefix.bat oldPrefix newPrefix delimeter"
-	echo Add "-s" as the final argument for all subfolders
-	exit /b
-)
+	ECHO Missing Second Name Arguement
+	CALL :batchInfo
+	EXIT /b
+	)
 
 if "%3" == "" (
-	echo Missing Delimeter Arguement
-	echo "batchPrefix.bat oldPrefix newPrefix delimeter"
-	echo Add "-s" as the final argument for all subfolders
-	exit /b
-)
+	ECHO Missing Delimeter Arguement	
+	CALL :batchInfo
+	EXIT /b
+	)
 
 if "%4"  == "-s" (
-	
-	echo Replacing Prefix "%1"%3 with "%2"%3 in all subfolders
-	FOR /d %%x IN (*) DO (
-		For /F "tokens=1* delims=%3" %%I IN ('dir /a-d /b') DO (
-			if %%I == %1 (rename "%%~I_%%~J" "%2_%%~J")
-		)
-		pushd %%x
-		For /F "tokens=1* delims=%3" %%I IN ('dir /a-d /b') DO (
-			if %%I == %1 (rename "%%~I_%%~J" "%2_%%~J")
-		)
-		popd
+	ECHO Replacing Prefix "%1"%3 with "%2"%3 in all subfolders
+	REM replace sub directories
+	CALL :directories %1 %2 %3
+	REM replace root directory
+	CALL :replaceNames %1 %2 %3
+	EXIT /b
 	)
-	exit /b
-)
 
-echo Replacing Prefix "%1"%3 with "%2"%3
-For /F "tokens=1* delims=%3" %%I IN ('dir /a-d /b') DO (
-	if %%I == %1 (rename "%%~I_%%~J" "%2_%%~J")
-)
+:replaceNames
+	For /F "tokens=1* delims=%3" %%I IN ('dir /a-d /b') DO (
+	IF %%I == %1 (rename "%%~I_%%~J" "%2_%%~J"))
+	EXIT /B
+
+:batchInfo
+	ECHO "batchPrefix.bat oldPrefix newPrefix delimeter"
+	ECHO Add "-s" as the final argument for all subfolders
+	EXIT /B
+
+:directories
+	FOR /d %%x IN (*) DO (
+		PUSHD %%x
+		CALL :directories %1 %2 %3
+		CALL :replaceNames %1 %2 %3
+		REM CALL :replaceNames %1 %2 %3
+		POPD
+	)
+	EXIT /B
+	
+:EOF
