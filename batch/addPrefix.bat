@@ -25,9 +25,11 @@ if "%3" == "" (
 	CALL :batchInfo
 	GOTO :EOF
 	)	
+
+ECHO Adding Prefix "%1%2" to ".%3" files
 	
 if "%4"  == "-s" (
-	ECHO Adding Prefix "%1%2" to ".%3" files in all subfolders
+	ECHO in all subfolders
 	REM replace sub directories
 	CALL :subDirectories %1 %2 %3
 	REM replace root directory
@@ -35,7 +37,6 @@ if "%4"  == "-s" (
 	GOTO :EOF
 	)
 	
-ECHO Adding Prefix "%1%2" to ".%3" files
 CALL :replaceNames %1 %2 %3
 GOTO :EOF
 	
