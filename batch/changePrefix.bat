@@ -1,7 +1,7 @@
 @echo off & SetLocal EnableExtensions EnableDelayedExpansion
 
 REM Jason Gourley
-REM Batch Rename File Prefix
+REM Windows Batch Rename File Prefix
 
 REM CLA 1 == Current Prefix
 REM CLA 2 == New Prefix
@@ -31,11 +31,12 @@ ECHO Replacing Prefix "%1"%3 with "%2"%3
 if "%4"  == "-s" (
 	ECHO In all subfolders
 	REM replace sub directories
-	CALL :directories %1 %2 %3
+	CALL :subDirectories %1 %2 %3
 	REM replace root directory	
 	)
 
 CALL :replaceNames %1 %2 %3
+GOTO :EOF
 	
 :replaceNames
 	For /F "tokens=1* delims=%3" %%I IN ('dir /a-d /b') DO (
@@ -47,10 +48,10 @@ CALL :replaceNames %1 %2 %3
 	ECHO Add "-s" as the final argument for all subfolders
 	EXIT /B
 
-:directories
+:subDirectories
 	FOR /d %%x IN (*) DO (
 		PUSHD %%x
-		CALL :directories %1 %2 %3
+		CALL :subDirectories %1 %2 %3
 		CALL :replaceNames %1 %2 %3
 		POPD
 	)
