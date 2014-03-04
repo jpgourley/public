@@ -26,7 +26,7 @@ if "%3" == "" (
 	GOTO :EOF
 	)
 
-ECHO Replacing Prefix "%1"%3 with "%2"%3
+ECHO Replacing Prefix "%1%3" with "%2%3"
 	
 if "%4"  == "-s" (
 	ECHO In all subfolders
