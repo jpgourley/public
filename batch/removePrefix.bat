@@ -55,7 +55,6 @@ GOTO :EOF
 		PUSHD %%x
 		CALL :subDirectories %1 %2 %3
 		CALL :replaceNames %1 %2 %3
-		REM CALL :replaceNames %1 %2 %3
 		POPD
 	)
 	EXIT /B
