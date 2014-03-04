@@ -1,7 +1,7 @@
 @echo off & SetLocal EnableExtensions EnableDelayedExpansion
 
 REM Jason Gourley
-REM Windows Batch Rename File Prefix
+REM Windows Batch Add File Prefix
 
 REM CLA 1 == Prefix to Add
 REM CLA 2 == Delimeter
@@ -46,7 +46,7 @@ GOTO :EOF
 	EXIT /B
 
 :batchInfo
-	ECHO "addPrefix.bat addPrefix delimeter extension"
+	ECHO "addPrefix.bat Prefix Delimeter Extension"
 	ECHO Add "-s" as the final argument for all subfolders
 	EXIT /B
 
