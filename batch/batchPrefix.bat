@@ -52,7 +52,6 @@ CALL :replaceNames %1 %2 %3
 		PUSHD %%x
 		CALL :directories %1 %2 %3
 		CALL :replaceNames %1 %2 %3
-		REM CALL :replaceNames %1 %2 %3
 		POPD
 	)
 	EXIT /B
