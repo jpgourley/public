@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ur:Remote xmlns:ur="http://unifiedremote.com/schemas/remote.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://unifiedremote.com/schemas/remote.xsd http://unifiedremote.com/schemas/remote.xsd"
+  Name="Manga Studio (Gray - Text)" Icon="MangaStudio_UI.png" Author="JasonPatrickGourley" Description="UI Gray - Text - Modifier Commands">
+  
+  <Actions>
+      <Action Name="Save">
+      <ActionRef Name="Stroke" Target="Input">
+        <Extra>CONTROL</Extra>
+		<Extra>VK_S</Extra>
+      </ActionRef>
+	  </Action>
+	  <Action Name="Tab">
+      <ActionRef Name="Press" Target="Input">
+        <Extra>TAB</Extra>
+      </ActionRef>
+	  </Action>
+	  <Action Name="ShiftDown">
+      <ActionRef Name="KeyDown" Target="Input">
+        <Extra>SHIFT</Extra>
+      </ActionRef>
+	  </Action>
+      <Action Name="ShiftUp">
+      <ActionRef Name="KeyUp" Target="Input">
+        <Extra>SHIFT</Extra>
+      </ActionRef>
+	  </Action>
+	    <Action Name="ControlDown">
+      <ActionRef Name="KeyDown" Target="Input">
+        <Extra>CONTROL</Extra>
+      </ActionRef>
+    </Action>
+	    <Action Name="ControlUp">
+      <ActionRef Name="KeyUp" Target="Input">
+        <Extra>CONTROL</Extra>
+      </ActionRef>
+    </Action>
+	  <Action Name="AltDown">
+      <ActionRef Name="KeyDown" Target="Input">
+        <Extra>MENU</Extra>
+      </ActionRef>
+    </Action>
+	    <Action Name="AltUp">
+      <ActionRef Name="KeyUp" Target="Input">
+        <Extra>MENU</Extra>
+      </ActionRef>
+    </Action>
+	<Action Name="SpaceDown">
+      <ActionRef Name="KeyDown" Target="Input">
+        <Extra>SPACE</Extra>
+      </ActionRef>
+    </Action>
+	    <Action Name="SpaceUp">
+      <ActionRef Name="KeyUp" Target="Input">
+        <Extra>SPACE</Extra>
+      </ActionRef>
+    </Action>
+	<Action Name="Undo">
+      <ActionRef Name="stroke" Target="Input">
+        <Extra>LCONTROL</Extra>
+        <Extra>VK_Z</Extra>
+      </ActionRef>
+    </Action>
+	    <Action Name="Redo">
+      <ActionRef Name="stroke" Target="Input">
+        <Extra>LCONTROL</Extra>
+        <Extra>VK_Y</Extra>
+      </ActionRef>
+    </Action>
+	    <Action Name="BrushSmaller">
+      <ActionRef Name="stroke" Target="Input">
+        <Extra>OEM_4</Extra>
+      </ActionRef>
+    </Action>
+	    <Action Name="BrushLarger">
+      <ActionRef Name="stroke" Target="Input">
+        <Extra>OEM_6</Extra>
+      </ActionRef>
+    </Action>
+	    <Action Name="ZoomIn">
+      <ActionRef Name="stroke" Target="Input">
+        <Extra>LCONTROL</Extra>
+		<Extra>OEM_PLUS</Extra>
+      </ActionRef>
+    </Action>
+	    <Action Name="ZoomPixel">
+      <ActionRef Name="stroke" Target="Input">
+        <Extra>LCONTROL</Extra>
+		<Extra>MENU</Extra>
+		<Extra>VK_0</Extra>
+      </ActionRef>
+    </Action>
+		    <Action Name="ZoomFit">
+      <ActionRef Name="stroke" Target="Input">
+        <Extra>LCONTROL</Extra>
+		<Extra>VK_0</Extra>
+      </ActionRef>
+    </Action>
+	    <Action Name="ZoomOut">
+      <ActionRef Name="stroke" Target="Input">
+        <Extra>LCONTROL</Extra>
+		<Extra>OEM_MINUS</Extra>
+      </ActionRef>
+    </Action>
+	</Actions>
+  
+  <Layout Scroll="none" Light="normal:#E3E5E5;focus:#CAE2F1;active:#CAE2F1;color:#333333;">
+	<Row>
+      <Control Type="Button" OnClick="Save" Align="Center" Width="fill" Text="SAVE" Light="normal:#F5FAFC;focus:#CAE2F1;active:#CAE2F1;color:#333333;"/>
+	</Row> 
+	  <Row>
+      <Control Type="Button" OnClick="Undo" Align="Center" Width="fill" Text="UNDO"/>
+	  <Control Type="Button" OnClick="Redo" Align="Center" Width="fill" Text="REDO"/>
+	</Row>   
+   <Row>
+      <Control Type="Button" OnDown="ShiftDown" OnUp="ShiftUp" Align="Center" Width="fill" Text="SHIFT"/>
+	  <Control Type="Button" OnDown="ControlDown" OnUp="ControlUp" Align="Center" Width="fill" Text="CONTROL"/>
+	  <Control Type="Button" OnDown="AltDown" OnUp="AltUp" Align="Center" Width="fill" Text="ALT"/>
+	  </Row>
+	<Row>
+      <Control Type="Button" OnDown="SpaceDown" OnUp="SpaceUp" Align="Center" Width="fill" Text="MOVE" Light="normal:#D7DBDE;focus:#CAE2F1;active:#CAE2F1;color:#333333;" />    
+	</Row>
+	<Row>
+      <Control Type="Button" OnClick="BrushSmaller" Align="Center" Width="" Text="BRUSH - SMALLER"/>
+      <Control Type="Button" OnClick="BrushLarger" Align="Center" Width="fill" Text="BRUSH - LARGER"/>    
+	</Row>	
+	<Row>
+      <Control Type="Button" OnClick="ZoomIn" Align="Center" Width="fill" Text="ZOOM IN"/>
+	  <Control Type="Button" OnClick="ZoomPixel" Align="Center" Width="fill" Text="1:1"/>
+	  <Control Type="Button" OnClick="ZoomFit" Align="Center" Width="fill" Text="FIT"/>
+      <Control Type="Button" OnClick="ZoomOut" Align="Center" Width="fill" Text="ZOOM OUT"/>    
+	</Row>	
+      <Control Type="Button" OnClick="Tab" Align="Center" Width="fill" Text="HIDE/SHOW PALLETS" Light="normal:#F5FAFC;focus:#CAE2F1;active:#CAE2F1;color:#333333;"/>	
+	</Layout>
+  
+</ur:Remote>
